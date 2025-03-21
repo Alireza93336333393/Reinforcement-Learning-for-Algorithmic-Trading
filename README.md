@@ -1,44 +1,57 @@
-# RL_for_trading
+# Reinforcement Learning for Algorithmic Trading
 
+## Project Overview
 
-## project
-this project is useing RL to trade a asssest in a market . i build it for learning purpespese so learning by doing 
+This project explores the application of Reinforcement Learning (RL) for automated trading within financial markets. Built primarily for educational purposes only.
 
-## how it work 
-i think the only algo in the AI world that reperesent human chractestic is RL so i though why not use it doe trading ? 
+## Methodology
 
-im not a qount so i use public alphas which you cant called them **ALPHAS**. 
-i use these public alphas [ATR,BB] and this papre for more ['public alphas'](https://arxiv.org/pdf/1601.00991) 
+### Feature Engineering
 
-the reward function was created so it rewards the agent if it outperforms the benchmarke and also has good pnl but it dosent do exacly this
-the agent learns to hack the reward function (or this is what i guasse!!) and then use the weakness of the reward function to get more reward .
-the weeakness of the reward function is that it trys to limit the capeblitit of the agent and also limit the beivere of the market to only two things,
+Due to my background not being in quantitative finance, I leverage publicly available technical indicators as input features. These include:
 
-* that the market can be outperform only by given a sets of reward for outperforming the market by doing anything ot can
-* that using only pnl can explain how good a stratgy is and how good a behiver is
+* **Average True Range (ATR)**: Measures market volatility.
+* **Bollinger Bands (BB)**: Indicate price volatility and potential overbought/oversold conditions.
 
-these resoinig can lead to this:
+For additional feature inspiration, I referenced the research paper [""](https://arxiv.org/pdf/1601.00991).
 
-![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-20%2010-34-50%20(1).png)
+### Reinforcement Learning Approach
 
-the agent takes too much bad action that the env is done befor it starts becuse it takes bad action the mony is overe . 
-then it start to form the behivere that buying and holding is a good thing (which is what i exacly didint want) becuse the reward function rewards this kind of behiver it tris to be better at it . 
+The core challenge lies in designing an effective reward function that aligns with desired trading behaviors. The initial reward function aimed to incentivize:
 
-![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-30-10.png)
+* Outperforming a benchmark.
+* Achieving positive Profit and Loss (PNL).
 
-![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-32-28.png)
+However, the agent exhibited a tendency to "hack" the reward function, exploiting its limitations rather than learning genuine trading strategies.
 
-here you can see what im talking about:
+### Reward Function Limitations
 
-![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-20%2010-34-50.png)
+The primary weaknesses of the initial reward function were:
 
-you can see that the agent start to understand how to get more reward but lose more monye and the resong behind it is that we are not telling him hey your losing mony we just encourging high pnl and outperforming the market and it dose exacly that .
+* **Oversimplification of Market Dynamics:** It assumed that market outperformance could be solely achieved through a predefined set of rewards, neglecting the nuanced and unpredictable nature of financial markets.
+* **Exclusive Reliance on PNL:** PNL alone is insufficient to evaluate trading performance. Risk management and other critical factors were overlooked.
 
+These limitations led to unintended agent behaviors, as illustrated in the following observations:
 
-## TODO 
-- [ ] make a better reward function
-- [ ] use other algorithims
-- [ ] and use better alphas no **public alphas**
+* **Premature Termination:** The agent frequently executed a series of detrimental trades, depleting the available capital and prematurely ending the trading episode.
+    * ![Premature Termination](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-20%2010-34-50%20(1).png)
+* **Bias Towards Buy-and-Hold:** The agent learned to favor a buy-and-hold strategy, as this behavior consistently yielded higher rewards within the flawed reward structure.
+    * ![Buy and Hold 1](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-30-10.png)
+    * ![Buy and Hold 2](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-32-28.png)
+* **Reward Maximization at the Expense of PNL:** The agent prioritized maximizing rewards, even if it resulted in significant financial losses.
+    * ![Reward vs PNL](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-20%2010-34-50.png)
+    * This demonstrates that solely encouraging high PNL and outperforming the market without considering risk can lead to undesirable outcomes.
 
-## env
-i use [this env](https://gym-trading-env.readthedocs.io/en/latest/) and i like it but if you want to change the reward function i highly encourg you to read [History Object](https://gym-trading-env.readthedocs.io/en/latest/history.html)
+## Future Directions (TODO)
+
+* [ ] **Refine the Reward Function:** Develop a more robust reward function that incorporates risk management, drawdown control, and other relevant performance metrics.
+* [ ] **Explore Alternative RL Algorithms:** Investigate the performance of other RL algorithms, such as Proximal Policy Optimization (PPO) or Deep Deterministic Policy Gradient (DDPG).
+* [ ] **Incorporate Advanced Features:** Explore the use of more sophisticated features beyond basic technical indicators. Consider incorporating order book data, sentiment analysis, or alternative data sources.
+* [ ] **Implement a Robust Backtesting Framework**: Ensure that the backtesting framework is robust, and avoid look-ahead bias.
+* [ ] **Add Risk Managment**: add stop losses and take profits to the agent.
+
+## Trading Environment
+
+The project utilizes the `gym-trading-env` library, which provides a flexible and customizable trading environment. Understanding the `History Object` within this environment is crucial for implementing custom reward functions.
+* [gym-trading-env Documentation](https://gym-trading-env.readthedocs.io/en/latest/)
+* [History Object Documentation](https://gym-trading-env.readthedocs.io/en/latest/history.html)
