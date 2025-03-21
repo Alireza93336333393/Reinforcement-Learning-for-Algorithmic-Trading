@@ -24,12 +24,18 @@ these resoinig can lead to this:
 the agent takes too much bad action that the env is done befor it starts becuse it takes bad action the mony is overe . 
 then it start to form the behivere that buying and holding is a good thing (which is what i exacly didint want) becuse the reward function rewards this kind of behiver it tris to be better at it . 
 
+![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-30-10.png)
+
+![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-32-28.png)
+
 here you can see what im talking about:
 
 ![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-20%2010-34-50.png)
 
-![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-30-10.png)
+you can see that the agent start to understand how to get more reward but lose more monye and the resong behind it is that we are not telling him hey your losing mony we just encourging high pnl and outperforming the market and it dose exacly that .
 
-![alt text]()
 
 ## TODO 
+- [ ] make a better reward function
+- [ ] use other algorithims
+- [ ] and use better alphas no **public alphas**
