@@ -28,6 +28,8 @@ here you can see what im talking about:
 
 ![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-20%2010-34-50.png)
 
+![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-30-10.png)
+
 ![alt text]()
 
 ## TODO 
