@@ -16,10 +16,10 @@ from alpha_tools import power,rank,ts_argmax,ts_std
 class PreProcessing:
     def __init__(self):
         pass
-    def in_processing(self,df):
+    def in_processing(self,df:pd.DataFrame):
         """
         Process the input data by dropping the first two rows, converting relevant columns to numeric,
-        setting the index to 'Date', and dropping the 'Adj Close' column.
+        setting the index to 'Date'.
 
         Parameters:
         df : pandas DataFrame
@@ -84,7 +84,7 @@ class PreProcessing:
             df.ta.sma(length=20,append=True,prefix='feature_')
             return df
         except ValueError:
-            print('make sure you pass a data frame') 
+            print(f'make sure you pass a DataFrame:{type(df)}') 
     def gann_high_low1(self,df, HPeriod=15, LPeriod=21):
         """
         Calculates the Gann High-Low indicator.
