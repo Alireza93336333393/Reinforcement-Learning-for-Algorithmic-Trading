@@ -25,6 +25,7 @@ the agent takes too much bad action that the env is done befor it starts becuse 
 then it start to form the behivere that buying and holding is a good thing (which is what i exacly didint want) becuse the reward function rewards this kind of behiver it tris to be better at it . 
 
 ![alt text]()
+![alt text](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-20%2010-34-50.png)
 
 
 ## TODO 
