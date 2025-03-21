@@ -13,7 +13,7 @@ Due to my background not being in quantitative finance, I leverage publicly avai
 * **Average True Range (ATR)**: Measures market volatility.
 * **Bollinger Bands (BB)**: Indicate price volatility and potential overbought/oversold conditions.
 
-For additional feature inspiration, I referenced the research paper [""](https://arxiv.org/pdf/1601.00991).
+For additional feature inspiration, I referenced the research paper ["101 Formulaic Alphas"](https://arxiv.org/pdf/1601.00991).
 
 ### Reinforcement Learning Approach
 
@@ -22,7 +22,7 @@ The core challenge lies in designing an effective reward function that aligns wi
 * Outperforming a benchmark.
 * Achieving positive Profit and Loss (PNL).
 
-However, the agent exhibited a tendency to "hack" the reward function, exploiting its limitations rather than learning genuine trading strategies.
+However, the agent hack the reward function , exploiting its limitations rather than learning genuine trading strategies.
 
 ### Reward Function Limitations
 
@@ -35,19 +35,19 @@ These limitations led to unintended agent behaviors, as illustrated in the follo
 
 * **Premature Termination:** The agent frequently executed a series of detrimental trades, depleting the available capital and prematurely ending the trading episode.
     * ![Premature Termination](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-20%2010-34-50%20(1).png)
+    * the length of the data that was traind on (3685)
 * **Bias Towards Buy-and-Hold:** The agent learned to favor a buy-and-hold strategy, as this behavior consistently yielded higher rewards within the flawed reward structure.
     * ![Buy and Hold 1](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-30-10.png)
     * ![Buy and Hold 2](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-21%2008-32-28.png)
-* **Reward Maximization at the Expense of PNL:** The agent prioritized maximizing rewards, even if it resulted in significant financial losses.
+* **Reward Maximization at the Expense of losing money:** The agent prioritized maximizing rewards, even if it resulted in financial losses.
     * ![Reward vs PNL](https://github.com/Alireza93336333393/A2C_for_trading/blob/main/Screenshot%20from%202025-03-20%2010-34-50.png)
     * This demonstrates that solely encouraging high PNL and outperforming the market without considering risk can lead to undesirable outcomes.
 
 ## Future Directions (TODO)
 
-* [ ] **Refine the Reward Function:** Develop a more robust reward function that incorporates risk management, drawdown control, and other relevant performance metrics.
-* [ ] **Explore Alternative RL Algorithms:** Investigate the performance of other RL algorithms, such as Proximal Policy Optimization (PPO) or Deep Deterministic Policy Gradient (DDPG).
-* [ ] **Incorporate Advanced Features:** Explore the use of more sophisticated features beyond basic technical indicators. Consider incorporating order book data, sentiment analysis, or alternative data sources.
-* [ ] **Implement a Robust Backtesting Framework**: Ensure that the backtesting framework is robust, and avoid look-ahead bias.
+* [ ] **Refine the Reward Function:** Develop a more robust reward function.
+* [ ] **Explore Alternative RL Algorithms:** Investigate the performance of other RL algorithms.
+* [ ] **Incorporate Advanced Features:** Explore the use of more sophisticated features beyond basic technical indicators.
 * [ ] **Add Risk Managment**: add stop losses and take profits to the agent.
 
 ## Trading Environment
