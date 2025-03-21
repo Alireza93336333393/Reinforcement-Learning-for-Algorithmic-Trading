@@ -39,3 +39,6 @@ you can see that the agent start to understand how to get more reward but lose m
 - [ ] make a better reward function
 - [ ] use other algorithims
 - [ ] and use better alphas no **public alphas**
+
+## env
+i use [this env](https://gym-trading-env.readthedocs.io/en/latest/) and i like it but if you want to change the reward function i highly encourg you to read [History Object](https://gym-trading-env.readthedocs.io/en/latest/history.html)
