@@ -1,4 +1,4 @@
-# A2C_for_trading
+# RL_for_trading
 
 
 ## project
